@@ -18,7 +18,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Harbour | Bereavement Administration Support",
   description:
-    "Harbour helps executors stay organised during probate and estate administration.",
+    "Harbour helps executors assess whether a straightforward estate may be suitable for guided probate, with organisation and support throughout the process.",
 };
 
 export default function RootLayout({

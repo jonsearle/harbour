@@ -4,16 +4,16 @@ import {
   Clock3,
   FileText,
   FolderOpen,
-  Landmark,
+  Gauge,
   ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const checklist = [
-  { label: "Register the death", state: "Complete" },
-  { label: "Get death certificate copies", state: "Complete" },
-  { label: "Contact pension provider", state: "In progress" },
-  { label: "Get probate paperwork ready", state: "Next" },
+  { label: "Estate appears straightforward", state: "Checked" },
+  { label: "Get probate paperwork ready", state: "In progress" },
+  { label: "Contact Barclays and pension provider", state: "Next" },
+  { label: "Review inheritance tax position", state: "Guidance" },
 ];
 
 const institutions = [
@@ -39,7 +39,7 @@ export function HarbourMockup() {
               Harbour
             </p>
             <p className="mt-1 text-base font-medium text-foreground">
-              Executor workspace
+              Guided probate workspace
             </p>
           </div>
           <div className="flex items-center gap-3 text-sm">
@@ -55,10 +55,10 @@ export function HarbourMockup() {
             <div className="mb-7 flex items-start justify-between gap-4">
               <div>
                 <h3 className="text-lg font-medium text-foreground">
-                  What needs attention
+                  Estate overview
                 </h3>
                 <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  A clear place to see what is done and what comes next.
+                  Straightforward estate. No disputes or overseas assets noted.
                 </p>
               </div>
               <ShieldCheck
@@ -70,7 +70,7 @@ export function HarbourMockup() {
             <div className="mb-8">
               <div className="mb-2 flex justify-between text-xs text-muted-foreground">
                 <span>Progress</span>
-                <span>7 of 12 steps</span>
+                <span>4 of 7 guidance steps</span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-muted">
                 <div className="h-full w-[58%] rounded-full bg-[hsl(154_18%_34%)]" />
@@ -101,12 +101,12 @@ export function HarbourMockup() {
                   aria-hidden="true"
                 />
                 <p className="text-sm font-medium text-foreground">
-                  Next helpful step
+                  Guidance
                 </p>
               </div>
               <p className="text-sm leading-6 text-muted-foreground">
-                Check the probate paperwork and confirm whether HMRC needs an
-                inheritance tax return.
+                Before applying, check whether the estate needs an inheritance
+                tax return. Harbour explains what to look for.
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export function HarbourMockup() {
               <div className="mb-3 flex items-center gap-2">
                 <FolderOpen className="h-4 w-4 text-muted-foreground" />
                 <h4 className="text-sm font-medium text-foreground">
-                  Documents in one place
+                  Probate paperwork
                 </h4>
               </div>
               <div className="grid gap-2.5">
@@ -166,11 +166,12 @@ export function HarbourMockup() {
               className="rounded-lg bg-[hsl(154_18%_24%)] p-5 text-primary-foreground"
             >
               <div className="mb-2 flex items-center gap-2">
-                <Landmark className="h-4 w-4 opacity-80" aria-hidden="true" />
-                <h4 className="text-sm font-medium">Probate application</h4>
+                <Gauge className="h-4 w-4 opacity-80" aria-hidden="true" />
+                <h4 className="text-sm font-medium">Suitability check</h4>
               </div>
               <p className="text-sm leading-6 text-primary-foreground/80">
-                Waiting for the HMRC reference before submission.
+                Suitable for guided probate unless tax, property or beneficiary
+                details change.
               </p>
             </section>
           </div>
@@ -181,7 +182,7 @@ export function HarbourMockup() {
 }
 
 function StatusIcon({ state }: { state: string }) {
-  const complete = state === "Complete";
+  const complete = state === "Complete" || state === "Checked";
   const next = state === "Next";
 
   return (

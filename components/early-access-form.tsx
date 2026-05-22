@@ -5,9 +5,18 @@ import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+
+const situations = [
+  "Currently handling probate",
+  "Recently completed probate",
+  "Planning ahead",
+  "Supporting family member",
+];
 
 export function EarlyAccessForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [situation, setSituation] = useState(situations[0]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,10 +35,10 @@ export function EarlyAccessForm() {
           aria-hidden="true"
         />
         <h3 className="text-xl font-medium text-foreground">
-          Thank you. You are on the early access list.
+          Thank you. Your interest has been registered.
         </h3>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">
-          We will be in touch as we open the next small group.
+          We will be in touch as we invite the next small group to try Harbour.
         </p>
       </div>
     );
@@ -39,8 +48,9 @@ export function EarlyAccessForm() {
     <form
       className="mx-auto grid max-w-xl gap-4"
       onSubmit={handleSubmit}
-      aria-label="Join the Harbour early access list"
+      aria-label="Register interest in Harbour early access"
     >
+      <input name="situation" type="hidden" value={situation} />
       <div className="grid gap-2 text-left">
         <label className="text-sm font-medium text-foreground" htmlFor="email">
           Email address
@@ -54,6 +64,27 @@ export function EarlyAccessForm() {
           required
         />
       </div>
+      <fieldset className="grid gap-3 text-left">
+        <legend className="text-sm font-medium text-foreground">
+          What best describes you?
+        </legend>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {situations.map((option) => (
+            <button
+              className={cn(
+                "rounded-md bg-card px-4 py-3 text-left text-sm text-muted-foreground shadow-fine transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                situation === option &&
+                  "bg-accent/55 text-accent-foreground",
+              )}
+              key={option}
+              onClick={() => setSituation(option)}
+              type="button"
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      </fieldset>
       <div className="grid gap-2 text-left">
         <label
           className="text-sm font-medium text-foreground"
@@ -65,11 +96,11 @@ export function EarlyAccessForm() {
         <Textarea
           id="experience"
           name="experience"
-          placeholder="What felt hardest to keep track of?"
+          placeholder="Tell us a little about your situation."
         />
       </div>
       <Button type="submit" size="lg" className="mt-2 w-full">
-        Join early access
+        Register interest
       </Button>
     </form>
   );

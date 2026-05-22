@@ -1,24 +1,23 @@
-import { ArrowDown, ClipboardCheck, Files, ListChecks } from "lucide-react";
+import { ArrowDown, ClipboardList, FileSearch, Route } from "lucide-react";
+import { AssessmentPreview } from "@/components/assessment-preview";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { EarlyAccessForm } from "@/components/early-access-form";
 import { HarbourMockup } from "@/components/harbour-mockup";
 
-const benefits = [
+const steps = [
   {
-    icon: ListChecks,
-    title: "See what matters next",
-    copy: "A clear view of the few things that need attention now.",
+    icon: ClipboardList,
+    title: "Answer a few questions about the estate",
   },
   {
-    icon: Files,
-    title: "Keep everything in one place",
-    copy: "Documents, accounts and contact notes stay easy to find.",
+    icon: FileSearch,
+    title:
+      "Understand whether it appears straightforward or may need professional support",
   },
   {
-    icon: ClipboardCheck,
-    title: "Feel more in control",
-    copy: "Know what is done, what is waiting, and what comes next.",
+    icon: Route,
+    title: "Receive guided next steps, organisation tools and probate guidance",
   },
 ];
 
@@ -34,14 +33,17 @@ export default function Home() {
           Harbour
         </a>
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground sm:flex">
-          <a className="transition-colors hover:text-foreground" href="#product">
-            Product
+          <a
+            className="transition-colors hover:text-foreground"
+            href="#how-it-works"
+          >
+            How it works
           </a>
           <a
             className="transition-colors hover:text-foreground"
-            href="#benefits"
+            href="#assessment"
           >
-            Benefits
+            Assessment
           </a>
           <a
             className="transition-colors hover:text-foreground"
@@ -52,62 +54,89 @@ export default function Home() {
         </nav>
       </header>
 
-      <section id="top" className="px-6 pb-16 pt-12 sm:px-8 lg:pb-20 lg:pt-20">
+      <section id="top" className="px-6 pb-20 pt-12 sm:px-8 lg:pb-28 lg:pt-20">
         <div className="mx-auto max-w-4xl animate-fade-up text-center">
           <p className="mx-auto mb-6 inline-flex rounded-full bg-accent/45 px-3.5 py-1.5 text-sm text-accent-foreground">
-            For executors managing unfamiliar responsibilities.
+            Designed for straightforward UK estates and first-time executors.
           </p>
           <h1 className="mx-auto max-w-4xl font-serif text-5xl font-semibold leading-[1.02] text-foreground sm:text-6xl lg:text-7xl">
-            A calmer way to manage what comes next after a death.
+            A calmer way to manage probate after a death.
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
-            Harbour helps you keep track of paperwork, organisations and next
-            steps — with calm guidance throughout the process.
+            Harbour helps executors stay organised, understand what comes next,
+            and assess whether they may be able to manage probate themselves.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <a href="#early-access">Join early access</a>
+              <a href="#assessment">Start assessment</a>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <a href="#product">
-                See how it helps
+              <a href="#how-it-works">
+                How Harbour works
                 <ArrowDown className="ml-2 h-4 w-4" aria-hidden="true" />
               </a>
             </Button>
           </div>
         </div>
-      </section>
 
-      <section id="product" className="px-6 pb-24 sm:px-8 lg:pb-32">
-        <div className="mx-auto mb-7 max-w-5xl text-center">
-          <p className="text-sm leading-6 text-muted-foreground">
-            Built for people suddenly responsible for what comes next.
-          </p>
+        <div className="mx-auto mt-16 max-w-5xl">
+          <HarbourMockup />
         </div>
-        <HarbourMockup />
       </section>
 
-      <section id="benefits" className="px-6 py-20 sm:px-8 lg:py-24">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-5 md:grid-cols-3">
-            {benefits.map((benefit) => (
+      <section id="how-it-works" className="px-6 py-20 sm:px-8 lg:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              How Harbour works
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+              A clearer way to understand where you stand.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {steps.map((step, index) => (
               <Card
                 className="border-border/60 bg-card/75 p-7 shadow-none"
-                key={benefit.title}
+                key={step.title}
               >
-                <benefit.icon
-                  className="h-5 w-5 text-[hsl(154_18%_34%)]"
-                  aria-hidden="true"
-                />
-                <h2 className="mt-5 text-lg font-medium text-foreground">
-                  {benefit.title}
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  {benefit.copy}
-                </p>
+                <div className="flex items-center justify-between gap-4">
+                  <step.icon
+                    className="h-5 w-5 text-[hsl(154_18%_34%)]"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm text-muted-foreground">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="mt-7 text-lg font-medium leading-7 text-foreground">
+                  {step.title}
+                </h3>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section
+        id="assessment"
+        className="border-y bg-[hsl(43_25%_94%)] px-6 py-20 sm:px-8 lg:py-28"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              Assessment preview
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+              See whether Harbour may be able to help with your estate.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
+              A short set of questions helps identify whether the estate appears
+              suitable for guided probate, or whether professional support may
+              be the more appropriate route.
+            </p>
+          </div>
+          <AssessmentPreview />
         </div>
       </section>
 
@@ -117,11 +146,11 @@ export default function Home() {
             Early access
           </p>
           <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-            Help shape Harbour.
+            Interested in trying Harbour?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-            We are speaking with people who have recently managed probate or
-            estate administration.
+            We are currently speaking with people who are handling probate or
+            estate administration themselves.
           </p>
           <div className="mt-10">
             <EarlyAccessForm />
@@ -135,6 +164,13 @@ export default function Home() {
             Harbour
           </p>
           <div className="flex flex-wrap items-center gap-5">
+            <p>Built in the UK</p>
+            <a
+              className="transition-colors hover:text-foreground"
+              href="#early-access"
+            >
+              Early access
+            </a>
             <a className="transition-colors hover:text-foreground" href="#">
               Privacy
             </a>
@@ -144,7 +180,6 @@ export default function Home() {
             >
               Contact
             </a>
-            <p>Built with care in the UK</p>
           </div>
         </div>
       </footer>
