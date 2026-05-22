@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 44 32% 97%;
+  --foreground: 150 12% 16%;
+  --card: 42 28% 99%;
+  --card-foreground: 150 12% 16%;
+  --primary: 154 18% 24%;
+  --primary-foreground: 45 35% 96%;
+  --secondary: 43 26% 91%;
+  --secondary-foreground: 150 12% 18%;
+  --muted: 42 24% 92%;
+  --muted-foreground: 151 7% 41%;
+  --accent: 174 22% 88%;
+  --accent-foreground: 151 17% 23%;
+  --border: 42 22% 84%;
+  --input: 42 22% 84%;
+  --ring: 154 18% 34%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(189, 214, 203, 0.22), transparent 34rem),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(154, 181, 169, 0.35);
+}
+
+body > [aria-label="Open Next.js Dev Tools"] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
