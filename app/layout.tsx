@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
     "Harbour helps executors assess whether a straightforward estate may be suitable for guided probate, with organisation and support throughout the process.",
 };
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,6 +34,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${cormorant.variable} font-sans`}>
         {children}
       </body>
+      {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
     </html>
   );
 }
