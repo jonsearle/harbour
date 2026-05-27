@@ -10,7 +10,7 @@ import { trackOnboardingEvent } from "@/lib/onboarding-analytics";
 
 type OnboardingStep = 1 | 2 | 3 | 4;
 
-type UserAnswers = {
+export type UserAnswers = {
   startingOption?: string;
   freeTextInput?: string;
   questions?: Record<string, string>;
@@ -96,6 +96,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
           {currentStep === 3 && (
             <OnboardingStep3
               onNext={handleNext}
+              onBack={handleBack}
               answers={answers}
             />
           )}

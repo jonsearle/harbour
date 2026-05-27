@@ -1,5 +1,7 @@
 "use client";
 
+import type { UserAnswers } from "@/components/onboarding-modal";
+
 interface OnboardingStep4Props {
   onNext: () => void;
   onBack: () => void;

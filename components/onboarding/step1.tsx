@@ -1,8 +1,10 @@
 "use client";
 
+import type { UserAnswers } from "@/components/onboarding-modal";
+
 interface OnboardingStep1Props {
   onNext: (answers: { startingOption?: string; freeTextInput?: string }) => void;
-  answers: any;
+  answers: Partial<UserAnswers>;
   isLoading: boolean;
 }
 

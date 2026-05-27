@@ -1,9 +1,11 @@
 "use client";
 
+import type { UserAnswers } from "@/components/onboarding-modal";
+
 interface OnboardingStep2Props {
   onNext: (answers: { questions: Record<string, string> }) => void;
   onBack: () => void;
-  answers: any;
+  answers: Partial<UserAnswers>;
   isLoading: boolean;
 }
 
