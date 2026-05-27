@@ -197,7 +197,7 @@ export function ProbateAssessmentFlow() {
   return (
     <div
       className={cn(
-        "mx-auto w-full transition-all duration-300",
+        "mx-auto w-full transition-all duration-500 ease-out",
         showProductPreview ? "max-w-5xl" : "max-w-3xl",
       )}
     >
@@ -212,7 +212,7 @@ export function ProbateAssessmentFlow() {
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full rounded-full bg-[hsl(154_18%_34%)] transition-all duration-300"
+            className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
             style={{ width: `${Math.max(completionPercent, 8)}%` }}
           />
         </div>
@@ -272,7 +272,7 @@ function QuestionScreen({
       className="animate-fade-up"
       key={currentQuestion.id}
     >
-      <h3 className="font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+      <h3 className="break-words font-serif text-3xl font-medium leading-tight text-foreground sm:text-5xl">
         {currentQuestion.title}
       </h3>
 
@@ -283,9 +283,9 @@ function QuestionScreen({
           return (
             <button
               className={cn(
-                "flex min-h-16 items-center justify-between rounded-lg border border-border/70 bg-card px-5 py-4 text-left text-base text-foreground shadow-fine transition-all hover:-translate-y-0.5 hover:bg-card/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                "flex min-h-16 items-center justify-between rounded-lg border border-border/70 bg-card px-5 py-4 text-left text-base text-foreground shadow-fine transition-colors duration-200 hover:bg-background/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 selected &&
-                  "border-[hsl(154_18%_34%)] bg-accent/50 text-accent-foreground",
+                  "border-accent/70 bg-accent/20 text-accent-foreground",
               )}
               key={option.value}
               onClick={() => onSelect(currentQuestion, option)}
@@ -296,7 +296,7 @@ function QuestionScreen({
                 className={cn(
                   "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border bg-card",
                   selected &&
-                    "border-transparent bg-[hsl(154_18%_34%)] text-white",
+                    "border-transparent bg-accent text-accent-foreground",
                 )}
               >
                 {selected && <CheckCircle2 className="h-4 w-4" />}
@@ -334,23 +334,23 @@ function ResultScreen({
   if (result.type === "too_complex") {
     return (
       <div className="animate-fade-up">
-        <ResultHeader icon="shield" label="Result" title="Your situation may require professional probate support" />
+        <ResultHeader icon="shield" label="Result" title="This estate may require additional legal or specialist support." />
         <div className="mt-5 max-w-2xl space-y-4 text-base leading-7 text-muted-foreground">
           <p>
             Based on your answers, your estate may involve legal or tax
-            complexities that Harbour does not currently support.
+            complexities that Harbour may not be able to support on its own.
           </p>
           <p>
-            You may be better supported by a probate solicitor or specialist
-            probate service.
+            A probate solicitor, specialist service or professional review may
+            be helpful before you continue.
           </p>
         </div>
-        <div className="mt-7 rounded-lg bg-accent/35 p-5">
+        <div className="mt-7 rounded-lg border border-accent/35 bg-accent/15 p-5">
           <p className="text-sm font-medium text-foreground">
-            We currently recommend:
+            A calm next step:
           </p>
           <p className="mt-2 text-base text-muted-foreground">
-            Co-op Legal Services
+            Get a professional review before relying on guided support.
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -360,7 +360,7 @@ function ResultScreen({
               rel="noreferrer"
               target="_blank"
             >
-              Visit Co-op Legal Services
+              Review professional support
               <ExternalLink className="ml-2 h-4 w-4" aria-hidden="true" />
             </a>
           </Button>
@@ -370,8 +370,8 @@ function ResultScreen({
           </Button>
         </div>
         <p className="mt-7 text-sm leading-6 text-muted-foreground">
-          We're continuing to expand the situations Harbour can support over
-          time.
+          You can still use Harbour to keep documents and communication
+          organised while you decide what support is right.
         </p>
       </div>
     );
@@ -382,10 +382,10 @@ function ResultScreen({
 
     return (
       <div className="animate-fade-up">
-        <ResultHeader icon="help" label="Result" title="You may need a little more information before continuing" />
+        <ResultHeader icon="help" label="Result" title="A few details would help us check whether Harbour can support this estate." />
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
-          To understand whether Harbour can support your probate application,
-          you may first need to confirm a few details about the estate.
+          To understand whether Harbour can support this estate, you may first
+          need to confirm a few practical details.
         </p>
         <ul className="mt-7 grid gap-3">
           {checklist.map((item) => (
@@ -394,7 +394,7 @@ function ResultScreen({
               key={item}
             >
               <HelpCircle
-                className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(154_18%_34%)]"
+                className="mt-0.5 h-4 w-4 shrink-0 text-accent-foreground"
                 aria-hidden="true"
               />
               <span>{item}</span>
@@ -415,15 +415,16 @@ function ResultScreen({
 
   return (
     <div className="animate-fade-up">
-      <ResultHeader icon="check" label="Result" title="Harbour should be able to help with your probate application" />
+      <ResultHeader icon="check" label="Result" title="This estate appears suitable for guided estate administration with Harbour." />
       <div className="mt-5 max-w-2xl space-y-4 text-base leading-7 text-muted-foreground">
         <p>
-          Based on your answers, your situation appears suitable for Harbour's
-          guided probate support.
+          Based on your answers, this looks like the kind of straightforward
+          estate Harbour is designed to help you manage.
         </p>
         <p>
-          Harbour helps you organise the information needed for probate, prepare
-          paperwork, and keep track of the process step-by-step.
+          Harbour helps you organise the information needed for estate
+          administration and probate, prepare paperwork, and keep track of the
+          process step by step.
         </p>
         <p>
           Many families pay solicitors £1,000-£3,000+ for straightforward
@@ -431,9 +432,10 @@ function ResultScreen({
           preparation.
         </p>
       </div>
-      <div className="mt-7 rounded-lg bg-accent/35 p-5">
+      <div className="mt-7 rounded-lg border border-accent/35 bg-accent/15 p-5">
         <p className="text-sm leading-6 text-accent-foreground">
-          With Harbour, you'll get full access for a simple one-off payment of
+          With Harbour Workspace, you'll get full access for a simple one-off
+          payment of
           <span className="font-semibold"> £49</span>.
         </p>
       </div>
@@ -474,15 +476,15 @@ function EmailScreen({
 }) {
   return (
     <div className="animate-fade-up">
-      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/60">
+      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/25">
         <Mail className="h-5 w-5 text-accent-foreground" aria-hidden="true" />
       </div>
-      <h3 className="mt-5 font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+      <h3 className="mt-5 break-words font-serif text-3xl font-medium leading-tight text-foreground sm:text-4xl">
         Join Harbour early access
       </h3>
       <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-        We're currently preparing Harbour for launch. Enter your email below to
-        get early access and updates when Harbour becomes available.
+        We're currently preparing Harbour Workspace for launch. Enter your email
+        below to get early access and updates when it becomes available.
       </p>
       <form className="mt-8 max-w-xl" onSubmit={onSubmit}>
         <label className="text-sm font-medium text-foreground" htmlFor="assessment-email">
@@ -516,13 +518,13 @@ function EmailScreen({
 function ThanksScreen({ onRestart }: { onRestart: () => void }) {
   return (
     <div className="animate-fade-up">
-      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/60">
+      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/25">
         <CheckCircle2
           className="h-5 w-5 text-accent-foreground"
           aria-hidden="true"
         />
       </div>
-      <h3 className="mt-5 font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+      <h3 className="mt-5 break-words font-serif text-3xl font-medium leading-tight text-foreground sm:text-4xl">
         Thank you. You're on the list.
       </h3>
       <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
@@ -550,14 +552,14 @@ function ResultHeader({
 
   return (
     <div className="flex gap-4">
-      <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/60">
+      <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/25">
         <Icon className="h-5 w-5 text-accent-foreground" aria-hidden="true" />
       </div>
       <div>
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
           {label}
         </p>
-        <h3 className="mt-2 max-w-2xl font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+        <h3 className="mt-2 max-w-2xl break-words font-serif text-3xl font-medium leading-tight text-foreground sm:text-4xl">
           {title}
         </h3>
       </div>

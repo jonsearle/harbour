@@ -187,7 +187,7 @@ export default function Home() {
               </ul>
 
               <div className="mt-auto pt-8">
-                <GettingStartedButton className="w-full" />
+                <GettingStartedButton className="w-full" onOpenOnboarding={() => setIsOnboardingOpen(true)} />
               </div>
             </div>
           </div>

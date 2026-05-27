@@ -41,11 +41,11 @@ const config: Config = {
         serif: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
       },
       boxShadow: {
-        soft: "0 24px 80px rgba(43, 56, 48, 0.12)",
-        fine: "0 1px 2px rgba(43, 56, 48, 0.08)",
+        soft: "0 26px 80px rgba(30, 36, 48, 0.09)",
+        fine: "0 1px 2px rgba(30, 36, 48, 0.06)",
       },
       animation: {
-        "fade-up": "fade-up 700ms ease-out both",
+        "fade-up": "fade-up 780ms cubic-bezier(0.22, 1, 0.36, 1) both",
       },
       keyframes: {
         "fade-up": {

@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: 44 32% 97%;
-  --foreground: 150 12% 16%;
-  --card: 42 28% 99%;
-  --card-foreground: 150 12% 16%;
-  --primary: 154 18% 24%;
-  --primary-foreground: 45 35% 96%;
-  --secondary: 43 26% 91%;
-  --secondary-foreground: 150 12% 18%;
-  --muted: 42 24% 92%;
-  --muted-foreground: 151 7% 41%;
-  --accent: 174 22% 88%;
-  --accent-foreground: 151 17% 23%;
-  --border: 42 22% 84%;
-  --input: 42 22% 84%;
-  --ring: 154 18% 34%;
+  --background: 37 31% 95%;
+  --foreground: 220 23% 15%;
+  --card: 40 50% 98%;
+  --card-foreground: 220 23% 15%;
+  --primary: 220 23% 15%;
+  --primary-foreground: 37 31% 95%;
+  --secondary: 37 28% 91%;
+  --secondary-foreground: 220 20% 19%;
+  --muted: 213 16% 87%;
+  --muted-foreground: 218 11% 46%;
+  --accent: 85 13% 65%;
+  --accent-foreground: 103 8% 33%;
+  --border: 40 19% 88%;
+  --input: 40 19% 88%;
+  --ring: 85 15% 45%;
 }
 
 * {
@@ -29,16 +29,14 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at top left, rgba(189, 214, 203, 0.22), transparent 34rem),
-    hsl(var(--background));
+  background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(154, 181, 169, 0.35);
+  background: rgba(168, 178, 154, 0.38);
 }
 
 body > [aria-label="Open Next.js Dev Tools"] {

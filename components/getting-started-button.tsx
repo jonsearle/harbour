@@ -6,7 +6,15 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProbateAssessmentFlow } from "@/components/probate-assessment-flow";
 
-export function GettingStartedButton({ className }: { className?: string }) {
+export function GettingStartedButton({
+  children = "Check if Harbour can help",
+  className,
+  onOpenOnboarding,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+  onOpenOnboarding?: () => void;
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -43,10 +51,10 @@ export function GettingStartedButton({ className }: { className?: string }) {
             <div className="sticky top-0 z-10 border-b bg-background/95 px-5 py-4 backdrop-blur sm:px-8">
               <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
                 <p
-                  className="font-serif text-2xl font-semibold text-foreground"
+                  className="font-serif text-2xl font-medium text-foreground"
                   id="getting-started-title"
                 >
-                  Getting Started
+                  Check if Harbour can help
                 </p>
                 <Button
                   aria-label="Close getting started"
@@ -72,11 +80,17 @@ export function GettingStartedButton({ className }: { className?: string }) {
     <>
       <Button
         className={className}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if (onOpenOnboarding) {
+            onOpenOnboarding();
+          } else {
+            setOpen(true);
+          }
+        }}
         size="lg"
         type="button"
       >
-        Get started
+        {children}
       </Button>
 
       {takeover}

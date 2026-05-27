@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { OnboardingStep1 } from "@/components/onboarding/step1";
 import { OnboardingStep2 } from "@/components/onboarding/step2";
@@ -26,6 +26,14 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
   const [currentStep, setCurrentStep] = useState<OnboardingStep>(1);
   const [answers, setAnswers] = useState<UserAnswers>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [hasTrackedOpen, setHasTrackedOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && !hasTrackedOpen) {
+      trackOnboardingEvent("onboarding_opened", { source: "homepage_cta" });
+      setHasTrackedOpen(true);
+    }
+  }, [isOpen, hasTrackedOpen]);
 
   if (!isOpen) return null;
 

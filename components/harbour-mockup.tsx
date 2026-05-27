@@ -31,9 +31,8 @@ const documents = [
 export function HarbourMockup() {
   return (
     <div className="relative mx-auto w-full max-w-5xl animate-fade-up [animation-delay:120ms]">
-      <div className="absolute -inset-8 rounded-[2rem] bg-[rgba(177,197,188,0.14)] blur-3xl" />
-      <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-card shadow-soft">
-        <div className="flex flex-col gap-4 border-b bg-[hsl(44_32%_98%)] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+      <div className="relative overflow-hidden rounded-lg border border-border/80 bg-card shadow-soft">
+        <div className="flex flex-col gap-4 border-b bg-background px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
               Harbour
@@ -44,7 +43,7 @@ export function HarbourMockup() {
           </div>
           <div className="flex items-center gap-3 text-sm">
             <span className="text-muted-foreground">Margaret Ellis estate</span>
-            <span className="rounded-full bg-accent/70 px-3 py-1 text-xs font-medium text-accent-foreground">
+            <span className="rounded-full border border-accent/40 bg-accent/25 px-3 py-1 text-xs font-medium text-accent-foreground">
               58% complete
             </span>
           </div>
@@ -62,7 +61,7 @@ export function HarbourMockup() {
                 </p>
               </div>
               <ShieldCheck
-                className="mt-1 h-5 w-5 text-[hsl(154_18%_34%)]"
+                className="mt-1 h-5 w-5 text-accent-foreground"
                 aria-hidden="true"
               />
             </div>
@@ -73,14 +72,14 @@ export function HarbourMockup() {
                 <span>4 of 7 guidance steps</span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-muted">
-                <div className="h-full w-[58%] rounded-full bg-[hsl(154_18%_34%)]" />
+                <div className="h-full w-[58%] rounded-full bg-accent" />
               </div>
             </div>
 
             <div className="space-y-3.5">
               {checklist.map((item) => (
                 <div
-                  className="flex items-center gap-3 rounded-lg bg-background/65 p-4"
+                  className="flex items-center gap-3 rounded-lg border border-border/60 bg-background/55 p-4"
                   key={item.label}
                 >
                   <StatusIcon state={item.state} />
@@ -94,7 +93,7 @@ export function HarbourMockup() {
               ))}
             </div>
 
-            <div className="mt-6 rounded-lg bg-accent/35 p-5">
+            <div className="mt-6 rounded-lg border border-accent/35 bg-accent/15 p-5">
               <div className="mb-2 flex items-center gap-2">
                 <Clock3
                   className="h-4 w-4 text-accent-foreground"
@@ -111,7 +110,7 @@ export function HarbourMockup() {
             </div>
           </div>
 
-          <div className="grid content-start gap-7 bg-[hsl(43_30%_96%)] p-6 sm:p-8">
+          <div className="grid content-start gap-7 bg-secondary/55 p-6 sm:p-8">
             <section aria-label="Organisations to contact">
               <div className="mb-3 flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-muted-foreground" />
@@ -122,7 +121,7 @@ export function HarbourMockup() {
               <div className="space-y-2.5">
                 {institutions.map((institution) => (
                   <div
-                    className="rounded-lg bg-card px-4 py-3.5 shadow-fine"
+                    className="rounded-lg border border-border/60 bg-card px-4 py-3.5 shadow-fine"
                     key={institution.name}
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -151,7 +150,7 @@ export function HarbourMockup() {
               <div className="grid gap-2.5">
                 {documents.map((document) => (
                   <div
-                    className="flex items-center gap-2 rounded-lg bg-card px-4 py-3.5 text-sm text-foreground shadow-fine"
+                    className="flex items-center gap-2 rounded-lg border border-border/60 bg-card px-4 py-3.5 text-sm text-foreground shadow-fine"
                     key={document}
                   >
                     <FileText className="h-4 w-4 text-muted-foreground" />
@@ -163,7 +162,7 @@ export function HarbourMockup() {
 
             <section
               aria-label="Probate reference"
-              className="rounded-lg bg-[hsl(154_18%_24%)] p-5 text-primary-foreground"
+              className="rounded-lg bg-primary p-5 text-primary-foreground"
             >
               <div className="mb-2 flex items-center gap-2">
                 <Gauge className="h-4 w-4 opacity-80" aria-hidden="true" />
@@ -189,8 +188,8 @@ function StatusIcon({ state }: { state: string }) {
     <span
       className={cn(
         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
-        complete && "border-transparent bg-[hsl(154_18%_34%)] text-white",
-        next && "border-accent bg-accent text-accent-foreground",
+        complete && "border-transparent bg-accent text-accent-foreground",
+        next && "border-accent/60 bg-accent/25 text-accent-foreground",
         !complete && !next && "border-transparent bg-card text-muted-foreground",
       )}
     >
