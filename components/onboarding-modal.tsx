@@ -97,6 +97,7 @@ export function OnboardingModal({ isOpen, onClose }: OnboardingModalProps) {
             <OnboardingStep3
               onNext={handleNext}
               onBack={handleBack}
+              onClose={handleClose}
               answers={answers}
             />
           )}
