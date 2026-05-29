@@ -7,6 +7,7 @@ import {
   Landmark,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 
 const benefits = [
   {
@@ -71,9 +72,13 @@ export default function Home() {
             process without expensive solicitor fees.
           </p>
           <div className="mt-9 flex items-center justify-center">
-            <Link href="/get-started">
+            <TrackedLink
+              href="/get-started"
+              eventName="get_started_clicked"
+              eventParams={{ location: "homepage_hero" }}
+            >
               <Button size="lg">Get started</Button>
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

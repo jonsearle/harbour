@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CheckCircle2, Bell, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 
 const freeFeatures = [
   "Personalised step-by-step guidance",
@@ -83,11 +84,16 @@ export default function GetStarted() {
             </ul>
 
             <div className="mt-auto pt-8">
-              <Link href="/interest" className="block">
+              <TrackedLink
+                href="/interest"
+                className="block"
+                eventName="harbour_assist_selected"
+                eventParams={{ product: "harbour_assist" }}
+              >
                 <Button className="w-full" size="lg">
                   Choose Harbour Assist
                 </Button>
-              </Link>
+              </TrackedLink>
             </div>
           </div>
 
@@ -134,11 +140,16 @@ export default function GetStarted() {
             </ul>
 
             <div className="mt-auto pt-8">
-              <Link href="/interest" className="block">
+              <TrackedLink
+                href="/interest"
+                className="block"
+                eventName="harbour_probate_selected"
+                eventParams={{ product: "harbour_probate" }}
+              >
                 <Button className="w-full" size="lg">
                   Choose Harbour Probate
                 </Button>
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { trackEvent } from "@/lib/analytics";
+
 type OnboardingEvent =
   | "onboarding_opened"
   | "onboarding_option_selected"
@@ -11,16 +13,7 @@ type OnboardingEvent =
 
 export function trackOnboardingEvent(
   event: OnboardingEvent,
-  payload: Record<string, any> = {}
+  payload: Record<string, unknown> = {},
 ) {
-  const eventPayload = {
-    event,
-    ...payload,
-  };
-
-  if (typeof window !== "undefined" && window.dataLayer) {
-    window.dataLayer.push(eventPayload);
-  }
-
-  console.info("[Harbour Onboarding]", eventPayload);
+  trackEvent(event, payload);
 }

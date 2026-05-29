@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { HarbourMockup } from "@/components/harbour-mockup";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 type QuestionId = "will" | "estateValue" | "property" | "overseas" | "disputes";
@@ -99,12 +100,6 @@ const unknownChecklist: Record<QuestionId, string> = {
 
 const estateValueChecklist =
   "Check whether inheritance tax, allowances, or property details may affect the application";
-
-declare global {
-  interface Window {
-    dataLayer?: Object[];
-  }
-}
 
 export function ProbateAssessmentFlow() {
   const [screen, setScreen] = useState<Screen>("questions");
@@ -619,14 +614,5 @@ function trackAssessmentEvent(
   event: AssessmentEvent,
   payload: Record<string, unknown> = {},
 ) {
-  const eventPayload = {
-    event,
-    ...payload,
-  };
-
-  if (typeof window !== "undefined") {
-    window.dataLayer?.push(eventPayload);
-  }
-
-  console.info("[Harbour assessment]", eventPayload);
+  trackEvent(event, payload);
 }
