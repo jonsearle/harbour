@@ -1,33 +1,37 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import {
-  Bell,
-  CheckCircle2,
-  ShieldCheck,
+  CircleHelp,
+  ClipboardCheck,
+  FolderOpen,
+  HandHeart,
+  Landmark,
 } from "lucide-react";
-import { FreeNotificationButton } from "@/components/free-notification-button";
-import { GettingStartedButton } from "@/components/getting-started-button";
-import { OnboardingModal } from "@/components/onboarding-modal";
+import { Button } from "@/components/ui/button";
 
-const freeFeatures = [
-  "Notify multiple organisations",
-  "Upload documents securely",
-  "Track responses and updates",
-  "Keep communication organised",
-];
-
-const paidFeatures = [
-  "Guided estate administration workspace",
-  "Step-by-step probate support",
-  "Document and paperwork organisation",
-  "Progress tracking and reminders",
-  "Secure document storage",
-  "Guidance through probate and estate administration",
+const benefits = [
+  {
+    icon: ClipboardCheck,
+    title: "Understand what needs doing",
+    description: "Get clear guidance tailored to your situation.",
+  },
+  {
+    icon: FolderOpen,
+    title: "Stay organised",
+    description: "Keep track of documents, tasks and organisations in one place.",
+  },
+  {
+    icon: Landmark,
+    title: "Find out whether probate is required",
+    description: "Understand your responsibilities and what happens next.",
+  },
+  {
+    icon: HandHeart,
+    title: "Get help when you need it",
+    description: "Choose between managing things yourself or getting additional support from Harbour.",
+  },
 ];
 
 export default function Home() {
-  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -45,11 +49,6 @@ export default function Home() {
             width="692"
           />
         </a>
-        <nav className="hidden items-center gap-8 text-sm text-muted-foreground sm:flex">
-          <a className="transition-colors hover:text-foreground" href="#plans">
-            Plans
-          </a>
-        </nav>
       </header>
 
       <section
@@ -58,145 +57,76 @@ export default function Home() {
       >
         <div className="pointer-events-none absolute inset-x-6 top-2 h-px bg-border/70 sm:inset-x-8" />
         <div className="mx-auto max-w-4xl animate-fade-up text-center">
+          <div className="mb-6 flex justify-center">
+            <span className="inline-block rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent-foreground">
+              Guidance after a death
+            </span>
+          </div>
           <h1 className="mx-auto max-w-[19rem] break-words font-serif text-4xl font-medium leading-[1.1] text-foreground sm:max-w-4xl sm:text-6xl sm:leading-[1.04] lg:text-7xl">
-            We help take care of the practical side of loss
+            A simpler way to manage the practical side of loss
           </h1>
           <p className="mx-auto mt-8 max-w-[19rem] break-words text-base leading-7 text-muted-foreground sm:max-w-2xl sm:text-lg sm:leading-8">
-            Harbour helps you notify organisations, organise paperwork, and
-            manage estate administration — all in one calm, secure workspace.
+            Understand what needs doing, stay organised, and find out whether
+            probate is required. If it is, Harbour can help you complete the
+            process without expensive solicitor fees.
           </p>
           <div className="mt-9 flex items-center justify-center">
-            <FreeNotificationButton />
+            <Link href="/get-started">
+              <Button size="lg">Get started</Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      <section
-        id="plans"
-        className="border-y border-border/70 bg-card/45 px-6 py-20 sm:px-8 lg:py-24"
-      >
-        <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
-              Choose where to begin
-            </p>
-            <h2 className="mx-auto mt-4 max-w-[19rem] break-words font-serif text-3xl font-medium leading-tight text-foreground sm:max-w-none sm:text-5xl">
-              Start free. Add probate support if you need it.
+      <section className="border-y border-border/70 bg-card/35 px-6 py-20 sm:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-12">
+          <div className="max-w-2xl">
+            <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-accent/20 text-accent-foreground">
+              <CircleHelp className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <h2 className="font-serif text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+              Why Harbour?
             </h2>
-          </div>
-
-          <div className="mt-12 grid gap-5 lg:grid-cols-2 lg:items-stretch">
-            <div className="flex flex-col rounded-lg border border-border/80 bg-card/90 p-7 shadow-soft sm:p-8">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-                <div className="min-w-0">
-                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-accent/25">
-                    <Bell
-                      className="h-5 w-5 text-accent-foreground"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <p className="text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                    Free
-                  </p>
-                  <h3 className="mt-3 font-serif text-3xl font-medium leading-tight text-foreground">
-                    Notifications & organisation
-                  </h3>
-                </div>
-                <div className="shrink-0 sm:text-right">
-                  <p className="font-serif text-5xl font-medium leading-none text-foreground">
-                    £0
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    no card needed
-                  </p>
-                </div>
-              </div>
-
-              <p className="mt-6 text-base leading-7 text-muted-foreground">
-                For most people, this is the best place to start. Notify organisations, upload documents and keep everything organised in one place while you work out what needs to happen next.
+            <div className="mt-8 space-y-5 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+              <p>
+                When someone dies, there can be dozens of organisations to contact, documents to find, forms to complete and decisions to make.
               </p>
-
-              <ul className="mt-7 grid gap-4 text-sm text-muted-foreground">
-                {freeFeatures.map((item) => (
-                  <li className="flex gap-3" key={item}>
-                    <CheckCircle2
-                      className="mt-0.5 h-4 w-4 shrink-0 text-accent-foreground"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto pt-8">
-                <FreeNotificationButton className="w-full">
-                  Start for free
-                </FreeNotificationButton>
-              </div>
-            </div>
-
-            <div className="flex flex-col rounded-lg border border-primary/20 bg-card p-7 shadow-soft sm:p-8">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-                <div className="min-w-0">
-                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-accent/45">
-                    <ShieldCheck
-                      className="h-5 w-5 text-accent-foreground"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <p className="text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                    Harbour Workspace
-                  </p>
-                  <h3 className="mt-3 font-serif text-3xl font-medium leading-tight text-foreground">
-                    Probate & estate administration
-                  </h3>
-                </div>
-                <div className="shrink-0 sm:text-right">
-                  <p className="font-serif text-5xl font-medium leading-none text-foreground">
-                    £49
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    one-off
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-4 text-base leading-7 text-muted-foreground">
-                <p>
-                  Probate is the legal process of managing somebody's estate after they die.
-                </p>
-                <p>
-                  Many people pay solicitors thousands to handle the paperwork and guide them through the process. Harbour Workspace helps you manage probate, organise documents and work through estate administration step by step — without unnecessary solicitor costs.
-                </p>
-              </div>
-
-              <p className="mt-5 rounded-lg border border-accent/35 bg-accent/15 p-4 text-sm leading-6 text-accent-foreground">
-                Everything in free, plus guided support for probate and estate administration.
+              <p>
+                Information is scattered across government websites, banks, insurers and service providers. Most people have never managed an estate before and don't know where to start.
               </p>
-
-              <ul className="mt-7 grid gap-4 text-sm text-muted-foreground">
-                {paidFeatures.map((item) => (
-                  <li className="flex gap-3" key={item}>
-                    <CheckCircle2
-                      className="mt-0.5 h-4 w-4 shrink-0 text-accent-foreground"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto pt-8">
-                <GettingStartedButton className="w-full" onOpenOnboarding={() => setIsOnboardingOpen(true)} />
-              </div>
+              <p className="font-medium text-foreground">
+                Harbour brings everything together in one place, helping you understand what needs doing, stay organised and work through the process step by step.
+              </p>
             </div>
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl text-center text-sm leading-6 text-muted-foreground">
-            <p>
-              The upgrade check helps us understand whether Harbour is likely to
-              be a good fit before you move into the paid workspace.
-            </p>
+          <div className="lg:pt-[7.6rem]">
+            <div className="grid gap-0 border-y border-border/70 lg:border-y-0 lg:border-l lg:pl-10">
+              {benefits.map((benefit) => {
+                const Icon = benefit.icon;
+
+                return (
+                  <div
+                    key={benefit.title}
+                    className="grid grid-cols-[auto_1fr] gap-4 border-b border-border/65 py-4 last:border-b-0 sm:py-5"
+                  >
+                    <div className="pt-1">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent-foreground">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-lg font-medium leading-snug text-foreground">
+                        {benefit.title}
+                      </h3>
+                      <p className="mt-1.5 max-w-xl text-sm leading-6 text-muted-foreground">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -225,10 +155,6 @@ export default function Home() {
         </div>
       </footer>
 
-      <OnboardingModal
-        isOpen={isOnboardingOpen}
-        onClose={() => setIsOnboardingOpen(false)}
-      />
     </main>
   );
 }
