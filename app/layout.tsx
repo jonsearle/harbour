@@ -27,7 +27,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-FMF6KMMJHB";
 
 export default function RootLayout({
   children,
