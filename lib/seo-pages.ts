@@ -539,9 +539,9 @@ export const probateArticles: SeoArticle[] = [
     updated: "2026-05-30",
     ctaHeader: "Not sure whether probate applies to your situation?",
     ctaSubline:
-      "Answer a few questions and Harbour will assess whether probate is likely to be required and explain why.",
-    ctaButton: "Guide Me Through This",
-    ctaDestination: "/probate-check",
+      "Harbour Assist is being built to help you organise the practical admin after a death.",
+    ctaButton: "Join Harbour Assist Early Access",
+    ctaDestination: "/interest/assist",
     intro: [
       "One of the most common questions after someone dies is whether probate is actually required.",
       "The answer depends on the assets involved, how they were owned and the requirements of the organisations holding them.",

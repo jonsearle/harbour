@@ -51,9 +51,9 @@ export default function ProbatePage() {
     <main className="min-h-screen overflow-hidden">
       <SiteHeader
         ctaEventName="probate_cta_clicked"
-        ctaHref="/probate-check"
+        ctaHref="/interest/assist"
         ctaLocation="probate_header"
-        ctaText="Check probate"
+        ctaText="Harbour Assist"
       />
 
       <section className="relative px-6 pb-16 pt-14 sm:px-8 lg:pb-24 lg:pt-20">
@@ -78,11 +78,11 @@ export default function ProbatePage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
-                href="/probate-check"
-                eventName="probate_check_clicked"
+                href="/do-i-need-probate"
+                eventName="probate_guide_clicked"
                 eventParams={{ cta_location: "probate_hero" }}
               >
-                <Button size="lg">Check If Probate Is Needed</Button>
+                <Button size="lg">Read Probate Guide</Button>
               </TrackedLink>
               <TrackedLink
                 href="/interest/probate"
