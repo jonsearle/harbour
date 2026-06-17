@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ProbateAssessmentFlow } from "@/components/probate-assessment-flow";
 
 export function GettingStartedButton({
-  children = "Check if Harbour can help",
+  children = "Get started",
   className,
   onOpenOnboarding,
 }: {
@@ -54,7 +54,7 @@ export function GettingStartedButton({
                   className="font-serif text-2xl font-medium text-foreground"
                   id="getting-started-title"
                 >
-                  Check if Harbour can help
+                  Get started
                 </p>
                 <Button
                   aria-label="Close getting started"

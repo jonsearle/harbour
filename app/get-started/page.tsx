@@ -85,7 +85,7 @@ export default function GetStarted() {
 
             <div className="mt-auto pt-8">
               <TrackedLink
-                href="/interest"
+                href="/interest/assist"
                 className="block"
                 eventName="harbour_assist_selected"
                 eventParams={{ product: "harbour_assist" }}
@@ -141,7 +141,7 @@ export default function GetStarted() {
 
             <div className="mt-auto pt-8">
               <TrackedLink
-                href="/interest"
+                href="/interest/probate"
                 className="block"
                 eventName="harbour_probate_selected"
                 eventParams={{ product: "harbour_probate" }}

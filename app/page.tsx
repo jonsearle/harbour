@@ -140,13 +140,16 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <img
             alt="Harbour"
-            className="h-8 w-auto"
-            height="235"
+            className="h-auto w-[122px]"
+            height="195"
             src="/brand/harbour-wordmark.png"
-            width="692"
+            width="744"
           />
           <div className="flex flex-wrap items-center gap-5">
             <p>Built in the UK</p>
+            <Link className="transition-colors hover:text-foreground" href="/guides">
+              Guides
+            </Link>
             <a className="transition-colors hover:text-foreground" href="#">
               Privacy
             </a>
